@@ -9,4 +9,5 @@ export const weddingData = {
   wedding: { date: '27 February 2027', label: 'Wedding', time: '10:00 AM', venue: 'Mumbai' },
   hashtag: '#ShreyaKiShubhGhadi',
   rsvp: { name: 'Shubham Chikhalkar', phone: '9764654320' },
+  music: { url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
 } as const;
