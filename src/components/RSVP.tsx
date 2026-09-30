@@ -1,2 +1,14 @@
-import {FormEvent,useState} from 'react'; import {Phone,CheckCircle2} from 'lucide-react'; import {weddingData as d} from '../data/weddingData';
-export function RSVP(){const [choice,setChoice]=useState<'yes'|'no'|null>(null);const [sent,setSent]=useState(false);function submit(e:FormEvent){e.preventDefault();if(choice)setSent(true)}return <section className="bg-[#FFF9EF] px-6 py-24"><div className="mx-auto max-w-xl text-center"><p className="text-[10px] uppercase tracking-[.3em] text-[#B5965A]">Kindly respond</p><h2 className="serif mt-4 text-5xl text-[#42131E]">Will you join us?</h2>{sent?<div className="mt-10 border border-[#B5965A]/50 p-8"><CheckCircle2 className="mx-auto text-[#6E1F2E]"/><p className="serif mt-4 text-2xl">Thank you for letting us know.</p></div>:<form onSubmit={submit} className="mt-10 space-y-5 text-left"><div className="grid grid-cols-2 gap-3"><button type="button" onClick={()=>setChoice('yes')} className={`focus-ring border p-4 text-sm ${choice==='yes'?'bg-[#6E1F2E] text-white':'border-[#B5965A]/50'}`}>Yes, I’ll be there</button><button type="button" onClick={()=>setChoice('no')} className={`focus-ring border p-4 text-sm ${choice==='no'?'bg-[#42131E] text-white':'border-[#B5965A]/50'}`}>Sadly, I can’t</button></div><input required aria-label="Your name" placeholder="Your name" className="focus-ring w-full border-b border-[#B5965A]/50 bg-transparent p-4 outline-none"/><input required type="number" min="1" max="20" aria-label="Number of guests" placeholder="Number of guests" className="focus-ring w-full border-b border-[#B5965A]/50 bg-transparent p-4 outline-none"/><textarea aria-label="Message" placeholder="A note for the couple (optional)" className="focus-ring min-h-28 w-full border-b border-[#B5965A]/50 bg-transparent p-4 outline-none"/><button disabled={!choice} className="focus-ring w-full bg-[#6E1F2E] p-4 text-xs uppercase tracking-[.2em] text-white disabled:opacity-40">Send RSVP</button></form>}<a href={`tel:${d.rsvp.phone}`} className="focus-ring mt-8 inline-flex items-center gap-2 text-sm text-[#6E1F2E]"><Phone className="h-4 w-4"/> {d.rsvp.name}</a></div></section>}
+import {Phone} from 'lucide-react';
+import {weddingData as d} from '../data/weddingData';
+
+export function RSVP(){
+  return <section className="bg-[#FFF9EF] px-6 py-24">
+    <div className="mx-auto max-w-xl text-center">
+      <p className="text-[10px] uppercase tracking-[.3em] text-[#B5965A]">Kindly respond</p>
+      <div className="mt-10"></div>
+      <a href={`tel:${d.rsvp.phone}`} className="focus-ring mt-8 inline-flex items-center gap-2 text-sm text-[#6E1F2E]">
+        <Phone className="h-4 w-4"/> {d.rsvp.name}
+      </a>
+    </div>
+  </section>
+}

@@ -1,2 +1,8 @@
-import {FormEvent,useEffect,useState} from 'react';
-type Wish={name:string;message:string}; export function Wishes(){const [wishes,setWishes]=useState<Wish[]>([]);const [name,setName]=useState('');const [message,setMessage]=useState('');useEffect(()=>{try{setWishes(JSON.parse(localStorage.getItem('wedding-wishes')||'[]'))}catch{}},[]);function add(e:FormEvent){e.preventDefault();if(!name.trim()||!message.trim())return;const next=[{name:name.trim(),message:message.trim()},...wishes];setWishes(next);localStorage.setItem('wedding-wishes',JSON.stringify(next));setName('');setMessage('')}return <section className="bg-[#42131E] px-6 py-24 text-[#FFF9EF]"><div className="mx-auto max-w-3xl"><p className="text-center text-[10px] uppercase tracking-[.3em] text-[#B5965A]">Leave a little love</p><h2 className="serif mt-4 text-center text-5xl">Wishes for Shubham & Shreya</h2><form onSubmit={add} className="mx-auto mt-10 max-w-xl border border-[#B5965A]/40 p-6"><input value={name} onChange={e=>setName(e.target.value)} required placeholder="Your name" className="w-full border-b border-white/20 bg-transparent p-3 outline-none"/><textarea value={message} onChange={e=>setMessage(e.target.value)} required placeholder="Your wishes" className="mt-3 min-h-24 w-full border-b border-white/20 bg-transparent p-3 outline-none"/><button className="mt-5 border border-[#B5965A] px-5 py-3 text-xs uppercase tracking-widest">Add wishes</button></form><div className="mt-10 grid gap-4 sm:grid-cols-2">{wishes.map((w,i)=><article key={i} className="border border-[#B5965A]/25 p-6"><p className="serif text-xl">“{w.message}”</p><p className="mt-4 text-xs uppercase tracking-widest text-[#B5965A]">— {w.name}</p></article>)}</div></div></section>}
+export function Wishes(){
+  return <section className="bg-[#42131E] px-6 py-24 text-[#FFF9EF]">
+    <div className="mx-auto max-w-3xl">
+      <h2 className="serif mt-4 text-center text-5xl">Wishes for Shubham & Shreya</h2>
+      <div className="mt-10 grid gap-4 sm:grid-cols-2"></div>
+    </div>
+  </section>
+}
