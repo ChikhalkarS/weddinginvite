@@ -1,0 +1,1 @@
+import {Music2} from 'lucide-react';export function MusicPlayer(){return <button aria-label="Wedding music coming soon" className="focus-ring fixed bottom-5 right-5 z-50 flex h-12 w-12 items-center justify-center border border-[#B5965A] bg-[#42131E] text-[#B5965A] shadow-lg"><Music2 className="h-4 w-4"/></button>}
